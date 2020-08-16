@@ -1,0 +1,795 @@
+const greetings = [
+	"Hello",
+	"Hola",
+	"Bonjour",
+	"Guten Tag",
+	"Salve",
+	"Hallo",
+	"Shalom"
+];
+
+const ContactRibbon = (props) => {
+	return (
+		<div className="contact-ribbon-container">
+			<div className="contact-ribbon">
+				<div
+					className="contact-ribbon-bkg"
+					style={{ width: props.isRibbon ? "100%" : "0" }}
+				></div>
+				<button
+					className="contact-ribbon-btn"
+					onClick={props.handleRibbonClick}
+					aria-label="contact ribbon"
+				>
+					<i class="far fa-paper-plane"></i>
+				</button>
+				<div
+					className="contact-ribbon-group"
+					style={{
+						visibility: props.isRibbon ? "visible" : "hidden",
+						opacity: props.isRibbon ? "1" : "0"
+					}}
+				>
+					<a
+						href="javascript:void(0)"
+						className="contact-ribbon-link"
+						aria-label="email"
+						aria-hidden={props.isRibbon ? false : true}
+					>
+						<i class="far fa-envelope"></i>
+					</a>
+					<a
+						href="javascript:void(0)"
+						className="contact-ribbon-link"
+						aria-label="github"
+						aria-hidden={props.isRibbon ? false : true}
+					>
+						<i class="fab fa-github"></i>
+					</a>
+					<a
+						href="javascript:void(0)"
+						className="contact-ribbon-link"
+						aria-label="linkedin"
+						aria-hidden={props.isRibbon ? false : true}
+					>
+						<i class="fab fa-linkedin-in"></i>
+					</a>
+					<a
+						href="javascript:void(0)"
+						className="contact-ribbon-link"
+						aria-label="codepen"
+						aria-hidden={props.isRibbon ? false : true}
+					>
+						<i class="fab fa-codepen"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+const AboutOverlay = (props) => {
+	return (
+		<div
+			className="about-overlay"
+			style={{ height: props.isAboutOverlay ? "100%" : "0" }}
+			aria-hidden={props.isAboutOverlay ? "false" : "true"}
+		>
+			<a
+				tabindex={props.isAboutOverlay ? "0" : "-1"}
+				aria-hidden={props.isAboutOverlay ? "false" : "true"}
+				href="javascript:void(0)"
+				className="close-btn btn-ripple"
+				onClick={props.handleAboutOverlay}
+			>
+				<div class="close-outer">
+					{window.innerWidth < 600 ? (
+						<div class="close-inner">
+							<div className="ripple"></div>
+							<span className="close-label">Close</span>
+						</div>
+					) : (
+						<div class="close-inner">
+							<span className="close-label">
+								<div className="ripple"></div>
+								Close
+							</span>
+						</div>
+					)}
+				</div>
+			</a>
+			<h2>About Me</h2>
+			<div className="about-overlay-content">
+				<p>
+					I'm a web developer, born and raised in beautiful St. Louis, MO, passionate
+					about learning and exploring new technologies. I strive to glean something
+					new from each application I create, and I'm always searching for the next
+					project to move forward with.
+				</p>
+				<p>
+					Although I specialize in front-end technologies, I'm excited to get my feet
+					wet with full stack as well! I care enormously about making responsive,
+					accessibility-centric designs that are beautiful and innovative.
+				</p>
+				<p>
+					I am always searching for my next opportunity, so drop me a line if you're
+					interested in collaborating with me!
+				</p>
+			</div>
+		</div>
+	);
+};
+
+const Background = (props) => {
+	return (
+		<div className="background-container">
+			<div className="line-skew-1 line-skew">
+				<div className="el el-top"></div>
+				<div className="el el-left"></div>
+				<div className="el el-right"></div>
+				<div className="el el-bottom"></div>
+			</div>
+			<div className="line-skew-2 line-skew">
+				<div className="el el-top"></div>
+				<div className="el el-left"></div>
+				<div className="el el-right"></div>
+				<div className="el el-bottom"></div>
+			</div>
+		</div>
+	);
+};
+
+const Nav = (props) => {
+	return (
+		<nav className="nav-container">
+			<div
+				className="mobile-overlay"
+				style={{ animation: props.navAnimation }}
+			></div>
+			<ul
+				className="navbar"
+				style={{
+					height: props.isNavOverlay ? "100%" : "",
+					opacity: props.isNavOverlay ? "1" : ""
+				}}
+			>
+				<li className="nav-item about-nav-item">
+					<a
+						className="nav-link about-nav-link btn-ripple"
+						href="javascript:void(0)"
+						onClick={props.handleAboutOverlay}
+						tabindex={
+							props.isAboutOverlay
+								? "-1"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "0"
+								: "-1"
+						}
+						aria-hidden={
+							props.isAboutOverlay
+								? "true"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "false"
+								: "true"
+						}
+					>
+						<div className="ripple"></div>
+						About
+					</a>
+					{window.innerWidth < 600 ? (
+						<i className="fas fa-long-arrow-alt-right about-arrow"></i>
+					) : (
+						""
+					)}
+				</li>
+				<li className="nav-item">
+					<a
+						id="skills"
+						className="nav-link btn-ripple"
+						href="javascript:void(0)"
+						tabindex={
+							props.isAboutOverlay
+								? "-1"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "0"
+								: "-1"
+						}
+						aria-hidden={
+							props.isAboutOverlay
+								? "true"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "false"
+								: "true"
+						}
+					>
+						<div className="ripple"></div>
+						Skills
+					</a>
+				</li>
+				<li className="nav-item">
+					<a
+						id="projects"
+						className="nav-link btn-ripple"
+						href="javascript:void(0)"
+						tabindex={
+							props.isAboutOverlay
+								? "-1"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "0"
+								: "-1"
+						}
+						aria-hidden={
+							props.isAboutOverlay
+								? "true"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "false"
+								: "true"
+						}
+					>
+						<div className="ripple"></div>
+						Projects
+					</a>
+				</li>
+				<li className="nav-item">
+					<a
+						id="contact"
+						className="nav-link btn-ripple"
+						href="javascript:void(0)"
+						tabindex={
+							props.isAboutOverlay
+								? "-1"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "0"
+								: "-1"
+						}
+						aria-hidden={
+							props.isAboutOverlay
+								? "true"
+								: window.innerWidth > 600 || props.isNavOverlay
+								? "false"
+								: "true"
+						}
+					>
+						<div className="ripple"></div>
+						Contact
+					</a>
+				</li>
+			</ul>
+			<button
+				className="mobile-btn"
+				onClick={props.handleNavOverlay}
+				aria-label="menu"
+			>
+				<span
+					className="bar top-bar"
+					style={{
+						transform: props.isNavOverlay
+							? "translate3d(0, 8px, 0) rotate(135deg)"
+							: "none"
+					}}
+				></span>
+				<span
+					className="bar middle-bar"
+					style={{
+						transform: props.isNavOverlay
+							? "rotate(-45deg) translate3d(0, 0, 0)"
+							: "none",
+						opacity: props.isNavOverlay ? "0" : "1"
+					}}
+				></span>
+				<span
+					className="bar bottom-bar"
+					style={{
+						transform: props.isNavOverlay
+							? "translate3d(0, -8px, 0) rotate(-135deg)"
+							: "none"
+					}}
+				></span>
+			</button>
+		</nav>
+	);
+};
+
+const Title = (props) => {
+	return (
+		<div className="title-container">
+			<p className="greeting">{props.greeting}</p>
+			<div className="title">
+				<h1>
+					<span className="title-i">I</span> <span className="title-am">am</span>
+					<span className="animate-block"></span>
+					<div className="my-name">Tracey</div>
+				</h1>
+			</div>
+			<div className="role">
+				<h2>
+					<span className="animate-block"></span>
+					<span className="my-role">{"<Web Developer />"}</span>
+				</h2>
+			</div>
+		</div>
+	);
+};
+
+const Skills = (props) => {
+	return (
+		<div className="skills-container section-container">
+			<h2>Skills</h2>
+			<div className="skills-box">
+				<ul>
+					<li>JavaScript</li>
+					<li>React</li>
+					<li>Redux</li>
+					<li>Git</li>
+					<li>Web Design</li>
+				</ul>
+			</div>
+		</div>
+	);
+};
+
+const Projects = (props) => {
+	let image =
+		"https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80";
+	return (
+		<div className="projects-container section-container">
+			<h2>Projects</h2>
+			<div className="projects-box">
+				<a
+					href="javascript:void(0)"
+					className="project"
+					tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+				>
+					<div className="project-container">
+						<div className="project-overlay"></div>
+						<img src={image}></img>
+						<div className="project-title">
+							<span className="project-title-clicky">View Project</span>
+							<span className="project-title-text">Project Title</span>
+						</div>
+					</div>
+				</a>
+				<a
+					href="javascript:void(0)"
+					className="project"
+					tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+				>
+					<div className="project-container">
+						<div className="project-overlay"></div>
+						<img src={image}></img>
+						<div className="project-title">
+							<span className="project-title-clicky">View Project</span>
+							<span className="project-title-text">Project Title</span>
+						</div>
+					</div>
+				</a>
+				<a
+					href="javascript:void(0)"
+					className="project"
+					tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+				>
+					<div className="project-container">
+						<div className="project-overlay"></div>
+						<img src={image}></img>
+						<div className="project-title">
+							<span className="project-title-clicky">View Project</span>
+							<span className="project-title-text">Project Title</span>
+						</div>
+					</div>
+				</a>
+				<a
+					href="javascript:void(0)"
+					className="project"
+					tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+				>
+					<div className="project-container">
+						<div className="project-overlay"></div>
+						<img src={image}></img>
+						<div className="project-title">
+							<span className="project-title-clicky">View Project</span>
+							<span className="project-title-text">Project Title</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	);
+};
+
+const Contact = (props) => {
+	return (
+		<div className="section-container contact-container">
+			<h2>Contact</h2>
+			<div className="contact-box">
+				<p>Interested in collaborating with me? I'd love to chat! </p>
+				<a
+					className="contact-email btn-ripple"
+					href="mailto:javascript:void(0)"
+					tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+				>
+					<div className="ripple"></div>
+					fakeemail@fakeemail.com
+				</a>
+				<ul>
+					<li>
+						<a
+							href="javascript:void(0)"
+							className="contact-icon btn-ripple"
+							tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+							aria-label="github"
+						>
+							<div className="ripple"></div>
+							<i class="fab fa-github"></i>
+						</a>
+					</li>
+					<li>
+						<a
+							href="javascript:void(0)"
+							className="contact-icon linkedin btn-ripple"
+							tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+							aria-label="linkedin"
+						>
+							<div className="ripple"></div>
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+					</li>
+					<li>
+						<a
+							href="javascript:void(0)"
+							className="contact-icon btn-ripple"
+							tabindex={props.isNavOverlay || props.isAboutOverlay ? "-1" : "0"}
+							aria-label="codepen"
+						>
+							<div className="ripple"></div>
+							<i class="fab fa-codepen"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	);
+};
+
+const Footer = (props) => {
+	return (
+		<footer className="footer-container">
+			<span className="trademark">&copy; 2020 | Tracey Jones &#9825;</span>
+		</footer>
+	);
+};
+
+const Cursor = (props) => {
+	return (
+		<div
+			id="large-cursor"
+			className="cursor large-cursor"
+			style={{
+				top: `${props.hover ? props.y - 30 : props.y - 20}px`,
+				left: `${props.hover ? props.x - 30 : props.x - 20}px`
+			}}
+		>
+			<div
+				id="small-cursor"
+				className="cursor small-cursor"
+				style={{
+					top: `${props.hover ? props.y - 5 : props.y - 2.5}px`,
+					left: `${props.hover ? props.x - 5 : props.x - 2.5}px`
+				}}
+			></div>
+		</div>
+	);
+};
+
+let greetingId, clientY, clientX;
+class Portfolio extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			greeting: "Hello",
+			isNavOverlay: false,
+			navAnimation: "",
+			navLink: false,
+			isAboutOverlay: false,
+			x: 0,
+			y: 0,
+			hover: false,
+			isRibbon: false
+		};
+
+		this.greeting = this.greeting.bind(this);
+		this.handleNavOverlay = this.handleNavOverlay.bind(this);
+		this.handleAboutOverlay = this.handleAboutOverlay.bind(this);
+		this.handleRipple = this.handleRipple.bind(this);
+		this.handleScroll = this.handleScroll.bind(this);
+		this.handleNavClick = this.handleNavClick.bind(this);
+		this.handleMouseMove = this.handleMouseMove.bind(this);
+		this.handleMouseHover = this.handleMouseHover.bind(this);
+		this.handleRibbonClick = this.handleRibbonClick.bind(this);
+	}
+
+	componentDidMount() {
+		this.greeting();
+		this.handleScroll();
+		this.handleNavClick();
+		this.handleRipple();
+		this.handleMouseHover();
+		// document.querySelector(".mobile-btn").focus();
+	}
+
+	componentDidUnmount() {
+		clearInterval(greetingId);
+		greetingId = null;
+		// document.querySelector(".mobile-btn").blur();
+	}
+
+	handleRibbonClick() {
+		this.setState({
+			isRibbon: !this.state.isRibbon
+		});
+	}
+
+	handleMouseHover(e) {
+		const largeCursor = document.getElementById("large-cursor"),
+			smallCursor = document.getElementById("small-cursor");
+		let test = Array.from(document.querySelectorAll("a, button"));
+		test.map((el) => {
+			el.addEventListener("mouseover", (e) => {
+				largeCursor.classList.add("large-cursor--hover");
+				smallCursor.classList.add("small-cursor--hover");
+				this.setState({
+					hover: true
+				});
+			});
+			el.addEventListener("mouseout", () => {
+				largeCursor.classList.remove("large-cursor--hover");
+				smallCursor.classList.remove("small-cursor--hover");
+				this.setState({
+					hover: false
+				});
+			});
+		});
+	}
+
+	handleMouseMove(e) {
+		if (window.innerWidth > 600) {
+			this.setState({
+				x: e.clientX,
+				y: e.clientY
+			});
+		}
+	}
+
+	handleNavClick() {
+		const navLink = Array.from(document.getElementsByClassName("nav-link"));
+		navLink.forEach((link) => {
+			link.addEventListener("click", () => {
+				this.setState(
+					{
+						navLink: true
+					},
+					() => {
+						this.state.isNavOverlay ? this.handleNavOverlay() : "";
+					}
+				);
+			});
+		});
+	}
+
+	handleScroll() {
+		document.addEventListener("click", (e) => {
+			e.preventDefault();
+			if (e.target.classList[0] === "nav-link" && e.target.id !== "") {
+				setTimeout(() => {
+					document.getElementById(e.target.id + "-section").scrollIntoView();
+				}, 200);
+			}
+		});
+		document.addEventListener("scroll", (e) => {
+			this.setState({
+				isRibbon: false
+			});
+		});
+	}
+
+	/* Modified and borrowed from https://codepen.io/ainalem/pen/LqvBWO?editors=1000 */
+	handleRipple() {
+		const btns = Array.from(document.querySelectorAll(".btn-ripple"));
+		btns.forEach((btn) => {
+			let timerId;
+			const eventStart = (e) => {
+				clearTimeout(timerId);
+				const ripple = e.target.querySelector(".ripple");
+				const size = btn.offsetWidth;
+				const pos = btn.getBoundingClientRect();
+				const x = e.clientX - pos.left - size;
+				const y = e.clientY - pos.top - size;
+				ripple.style =
+					"top:" +
+					y +
+					"px; left:" +
+					x +
+					"px; width: " +
+					size * 2 +
+					"px; height: " +
+					size * 2 +
+					"px;";
+				ripple.classList.remove("active");
+				ripple.classList.remove("start");
+				setTimeout(() => {
+					ripple.classList.add("start");
+					setTimeout(() => {
+						ripple.classList.add("active");
+					});
+				});
+			};
+			const eventEnd = (e) => {
+				const ripple = e.target.querySelector(".ripple");
+				clearTimeout(timerId);
+				timerId = setTimeout(() => {
+					ripple.classList.remove("active");
+					ripple.classList.remove("start");
+				}, 500);
+			};
+			btn.addEventListener("mousedown", eventStart);
+			btn.addEventListener("mouseup", eventEnd);
+
+			// Bind touch to mouse events: https://www.codicode.com/art/easy_way_to_add_touch_support_to_your_website.aspx
+
+			const touch2Mouse = (e) => {
+				const theTouch = e.changedTouches[0];
+				let mouseEv;
+
+				switch (e.type) {
+					case "touchstart":
+						mouseEv = "mousedown";
+						break;
+					case "touchend":
+						mouseEv = "mouseup";
+						break;
+					case "touchmove":
+						mouseEv = "mousemove";
+						break;
+					default:
+						return;
+				}
+
+				const mouseEvent = document.createEvent("MouseEvent");
+				mouseEvent.initMouseEvent(
+					mouseEv,
+					true,
+					true,
+					window,
+					1,
+					theTouch.screenX,
+					theTouch.screenY,
+					theTouch.clientX,
+					theTouch.clientY,
+					false,
+					false,
+					false,
+					false,
+					0,
+					null
+				);
+				theTouch.target.dispatchEvent(mouseEvent);
+			};
+			btn.addEventListener("touchstart", touch2Mouse);
+			btn.addEventListener("touchmove", touch2Mouse);
+			btn.addEventListener("touchend", touch2Mouse);
+		});
+	}
+
+	greeting() {
+		let i = 0;
+
+		greetingId = setInterval(() => {
+			this.setState({
+				greeting: greetings[i++ % greetings.length]
+			});
+		}, 3000);
+	}
+
+	handleNavOverlay() {
+		setTimeout(
+			() =>
+				this.setState(
+					{
+						isNavOverlay: !this.state.isNavOverlay
+					},
+					() => {
+						this.setState({
+							navAnimation: this.state.isNavOverlay
+								? "mobileOpen .8s both"
+								: this.state.navLink
+								? "none"
+								: "mobileClose .5s both"
+						});
+						this.state.isNavOverlay
+							? document.body.classList.add("nav-overlay-active")
+							: setTimeout(
+									() => document.body.classList.remove("nav-overlay-active"),
+									250
+							  );
+						this.state.isAboutOverlay
+							? document.querySelector(".about-nav-link").blur()
+							: this.state.isNavOverlay
+							? document.querySelector(".about-nav-link").focus()
+							: document.querySelector(".about-nav-link").blur();
+					}
+				),
+			250
+		);
+	}
+
+	handleAboutOverlay() {
+		setTimeout(
+			() =>
+				this.setState(
+					{
+						isAboutOverlay: !this.state.isAboutOverlay
+					},
+					() => {
+						this.state.isAboutOverlay
+							? document.body.classList.add("about-overlay-active")
+							: setTimeout(
+									() => document.body.classList.remove("about-overlay-active"),
+									750
+							  );
+						this.state.isAboutOverlay
+							? setTimeout(() => document.querySelector(".close-btn").focus(), 750)
+							: document.querySelector(".close-btn").blur();
+					}
+				),
+			250
+		);
+	}
+
+	render() {
+		const { x, y } = this.state;
+		return (
+			<div className="container" onMouseMove={this.handleMouseMove}>
+				<Cursor x={x} y={y} hover={this.state.hover} />
+
+				<div id="landing-page">
+					<Background />
+					<Nav
+						handleAboutOverlay={this.handleAboutOverlay}
+						handleNavOverlay={this.handleNavOverlay}
+						isNavOverlay={this.state.isNavOverlay}
+						isAboutOverlay={this.state.isAboutOverlay}
+						navAnimation={this.state.navAnimation}
+					/>
+					<Title greeting={this.state.greeting} />
+					<AboutOverlay
+						handleAboutOverlay={this.handleAboutOverlay}
+						isAboutOverlay={this.state.isAboutOverlay}
+					/>
+				</div>
+				<ContactRibbon
+					handleRibbonClick={this.handleRibbonClick}
+					isRibbon={this.state.isRibbon}
+				/>
+				<div id="skills-section" className="section">
+					<Skills />
+				</div>
+				<div id="projects-section" className="section">
+					<Projects
+						isNavOverlay={this.state.isNavOverlay}
+						isAboutOverlay={this.state.isAboutOverlay}
+					/>
+				</div>
+				<div id="contact-section" className="section">
+					<Contact
+						isNavOverlay={this.state.isNavOverlay}
+						isAboutOverlay={this.state.isAboutOverlay}
+					/>
+				</div>
+
+				<Footer />
+			</div>
+		);
+	}
+}
+
+ReactDOM.render(<Portfolio />, document.getElementById("root"));
